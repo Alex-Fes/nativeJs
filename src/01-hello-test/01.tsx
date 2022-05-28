@@ -1,13 +1,19 @@
-export function sum (a:number, b:number) {
+export function sum(a: number, b: number) {
     return a + b;
 }
 
-export function multiply (a:number, b:number) {
+export function multiply(a: number, b: number) {
     return a * b;
 }
 
-export function splitIntoWords (sentence: string) {
-    return sentence.toLowerCase().split(" ").map(w=>w.replace("!",""));
+export function splitIntoWords(sentence: string) {
+    const word = sentence.toLowerCase().split(" ")
+
+    return word.filter(w => w !== "" && w !== "-")
+        .map(w => w
+            .replace("!", "")
+            .replace(".", "")
+            .replace(",", ""));
 }
 
 
