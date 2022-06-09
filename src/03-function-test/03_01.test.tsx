@@ -39,7 +39,7 @@ test('House should be repared', ()=> {
     expect(city.houses[1].repaired).toBeTruthy();
 })
 test('stuff should be increased', ()=> {
-    toFireStuff(city.governmentBuildings[0],[20])
+    toFireStuff(city.governmentBuildings[0],20)
     expect(city.governmentBuildings[0].stuffCount).toBe(180);
 })
 

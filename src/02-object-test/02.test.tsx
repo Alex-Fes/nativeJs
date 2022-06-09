@@ -6,9 +6,9 @@ let city: CityType;
 beforeEach(() => {
     city = {
         title: 'New York',
-        houses: [{buildAt: 2012, repaired: false, address: {number: 100, street: {title: 'White street'}}},
-            {buildAt: 2008, repaired: false, address: {number: 100, street: {title: 'Happy street'}}},
-            {buildAt: 2020, repaired: false, address: {number: 101, street: {title: 'Happy street'}}}],
+        houses: [{id: 1, buildAt: 2012, repaired: false, address: {number: 100, street: {title: 'White street'}}},
+            {id: 1, buildAt: 2008, repaired: false, address: {number: 100, street: {title: 'Happy street'}}},
+            {id: 1, buildAt: 2020, repaired: false, address: {number: 101, street: {title: 'Happy street'}}}],
         governmentBuildings: [{type: 'HOSPITAL', budget: 200000, stuffCount: 200, address: {street:{title:'Central str'}}},
                                 {type: "FIRE-STATION", budget: 500000, stuffCount: 1000, address: {street:{title:'South str'}}}],
         citizensNumber: 1000000

@@ -32,7 +32,7 @@ beforeEach(()=> {
     }
 })
 
-test('new nech skill should added to students', () => {
+test('new tech skill should added to students', () => {
     expect(students.technologies.length).toBe(3)
     addSkill(students, 'JS')
     expect(students.technologies.length).toBe(4)
