@@ -1,4 +1,9 @@
 import {CityType} from "./02_cityType";
+import {
+    demolishHouseOnTheStreet,
+    getBuildingsWithStuffCountGreaterThen
+} from "../04-filter-array/04_filter";
+import {createGreeting, getHousesOnStreet, getStreetTitlesOfGovenmentBuildings} from "../05-map-array/05_map";
 
 
 let city: CityType;
@@ -13,6 +18,13 @@ beforeEach(() => {
                                 {type: "FIRE-STATION", budget: 500000, stuffCount: 1000, address: {street:{title:'South str'}}}],
         citizensNumber: 1000000
     }
+})
+
+
+test('Houses should be destroyed', ()=> {
+    demolishHouseOnTheStreet(city, 'Happy street')
+    expect(city.houses.length).toBe(1);
+    expect(city.houses[0].id).toBe(1);
 })
 
 
@@ -49,4 +61,38 @@ test ('test should contains hospital and fire-station', ()=>{
     expect(city.governmentBuildings[1].stuffCount).toBe(1000)
     expect(city.governmentBuildings[1].address.street.title).toBe('South str')
 
+})
+
+
+
+test('List of street title of government buidings', ()=>{
+    let streets = getStreetTitlesOfGovenmentBuildings(city.governmentBuildings)
+    expect(streets.length).toBe(2);// проверяем сколько объектов в массиве
+    expect(streets[0]).toBe('Central str')// проверяем соответствие названия улиц
+    expect(streets[1]).toBe('South str')// проверяем соответствие названия улиц
+})
+
+test('list of streets titles of houses', ()=> {
+    let streets = getHousesOnStreet(city.houses);
+
+    expect(streets.length).toBe(3);
+    expect(streets[0]).toBe('White street');
+    expect(streets[1]).toBe('Happy street');
+    expect(streets[2]).toBe('Happy street');
+})
+
+
+
+test('building with correct stuff count', ()=>{
+    let buildings = getBuildingsWithStuffCountGreaterThen(city.governmentBuildings, 500)
+    expect(buildings.length).toBe(1);
+    expect(buildings[0].type).toBe('FIRE-STATION')
+})
+
+test('greeting message for streets', ()=>{
+    let message = createGreeting(city.houses);
+    expect(message.length).toBe(3);
+    expect(message[0]).toBe('Hello guys from White street');
+    expect(message[1]).toBe('Hello guys from Happy street');
+    expect(message[2]).toBe('Hello guys from Happy street');
 })
